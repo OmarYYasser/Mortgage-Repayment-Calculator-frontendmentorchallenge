@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --lime: hsl(61, 70%, 52%);
+  --red: hsl(4, 69%, 50%);
+  --white: hsl(0, 0%, 100%);
+  --slate-100: hsl(202, 86%, 94%);
+  --slate-300: hsl(203, 41%, 72%);
+  --slate-400: hsl(200, 26%, 54%);
+  --slate-500: hsl(200, 24%, 40%);
+  --slate-900: hsl(202, 55%, 16%);
+  --slate-1000: hsl(201, 66%, 13%);
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  min-height: 100vh;
+  margin: 0;
+  background: rgb(184, 239, 239);
+}
+/* CSS Media Queries */
+.container {
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* CSS Media Queries */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+.app {
+  border-radius: 20px;
+  background: white;
+  display: grid;
+  grid-template-columns: 420px 420px;
+}
+.calc,
+.result {
+  padding: 30px 25px;
+  flex: 1 1 50%;
+}
+.result {
+  overflow: hidden;
+  color: white;
+}
+.result p {
+  color: #9ebacf;
+}
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.row label,
+.column label {
+  margin-bottom: 5px;
+  position: relative;
+}
+form .row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+form div.column {
+  display: flex;
+  flex-direction: column;
+}
+.rate,
+.term {
+  flex: 1 1 50%;
+}
+.redu {
+  width: 100%;
+  position: relative;
+}
+input[type="text"] {
+  box-sizing: border-box;
+  padding: 5px;
+  padding-left: 50px;
+  height: 40px;
+  padding-left: 50px;
+  width: 100%;
+  font-size: 16px;
+}
+
+fieldset {
+  border: 1px solid var(--lime);
+
+  margin-top: 7px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.calc button[type="submit"] {
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  background: var(--lime);
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-indent: 2px;
+}
+
+.result {
+  overflow: hidden;
+  border-radius: 0 0 0 75px;
+  background: var(--slate-900);
+}
+.column {
+  position: relative;
+}
+.calc > form:nth-child(2) > div:nth-child(1) input::before {
+  content: "hello world";
+  width: 100px;
+  height: 100px;
+  background: green;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.first-input {
+  position: relative;
+  width: 100%;
+}
+.first-input::after {
+  content: "€";
+  width: 40px;
+  height: calc(100% - 2px);
+  background: var(--slate-300);
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+.error::after,
+.redu.error::after {
+  background: red;
+}
+div.redu {
+  position: relative;
+}
+input.redu {
+  padding: 5px 40px 5px 5px;
+}
+.term > div:nth-child(2)::after {
+  content: "year";
+  width: 60px;
+
+  transition: 0.3s;
+}
+div.column:nth-child(2) > div:nth-child(2)::after {
+  content: "%";
+
+  transition: 0.3s;
+}
+.focus::after,
+.redu.focus::after {
+  background: var(--lime);
+}
+div.redu::after {
+  width: 40px;
+  height: calc(100% - 2px);
+  background: var(--slate-300);
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+fieldset:hover {
+  cursor: pointer;
+}
+fieldset.active {
+  background: hsla(61.1, 69.8%, 52%, 0.33);
+  border: 1px solid hsla(61, 70%, 52%, 0.548);
+}
+label:not(fieldset label) {
+  color: #65727b;
+}
+div.error ~ span {
+  display: inline;
+}
+button {
+  cursor: pointer;
+}
+@media (max-width: 1199px) {
+  .app,
+  .result {
+    border-radius: 0;
+  }
+  main {
+    align-items: flex-start;
+    padding: 0;
+  }
+  .app {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
+}
+@media (max-width: 480px) {
+  .row {
+    flex-direction: column;
+  }
+}
